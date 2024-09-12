@@ -1,0 +1,8 @@
+---
+title: "HW1_jw4693"
+author: "Jianming Wang"
+date: 2019-09-13
+output: html_document
+---
+
+This is a file for my homework 1 in Data Science I.
