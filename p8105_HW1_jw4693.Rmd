@@ -6,3 +6,36 @@ output: html_document
 ---
 
 This is a file for my homework 1 in Data Science I.
+
+```{r library needed packages}
+library(ggplot2)
+library(tidyverse)
+```
+
+#problem 0.1
+
+I have committed to git for the first time for problem 0.1, which can be viewed in the commit history.
+
+#problem 0.2
+
+This “problem” focuses on correct styling for your solutions to Problems 1 and 2.
+
+#problem 1
+
+``` {r problem 1}
+data("penguins", package = "palmerpenguins")
+summary(penguins)
+nrow(penguins)
+ncol(penguins)
+mean(penguins$flipper_length_mm,na.rm = T)
+
+
+```
+
+
+#problem 2
+
+``` {r problem 2}
+
+```
+
