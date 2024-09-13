@@ -1,8 +1,12 @@
 ---
 title: "HW1_jw4693"
 author: "Jianming Wang"
-date: 2019-09-13
-output: html_document
+date: "2024-09-13"
+output:
+  pdf_document: default
+  html_document: 
+   toc: true
+   toc_float: true
 ---
 
 This is a file for my homework 1 in Data Science I.
@@ -12,30 +16,64 @@ library(ggplot2)
 library(tidyverse)
 ```
 
-#problem 0.1
+# problem 0.1
 
 I have committed to git for the first time for problem 0.1, which can be viewed in the commit history.
 
-#problem 0.2
+# problem 0.2
 
 This “problem” focuses on correct styling for your solutions to Problems 1 and 2.
 
-#problem 1
+# problem 1
 
-``` {r problem 1}
+```{r problem 1}
 data("penguins", package = "palmerpenguins")
 summary(penguins)
 nrow(penguins)
 ncol(penguins)
 mean(penguins$flipper_length_mm,na.rm = T)
+```
 
+The 344 penguins counted in the dataset are from 3 different species, Adelie(152), Chinstrap(68) and Gentoo(124). They are from 3 island, Biscoe(168), Dream(124) and Torgersen(52). Except the 2 variables above, the dataset also contains 6 important variables for penguins, including bill_length_mm(mean 43.92, min 32.10, max 59.60 and median 44.45), bill_depth_mm(mean 17.15, min 13.10, max 21.50 and median 17.30), flipper_length_mm(mean 200.9, min 172.0, max 231.0 and median 197.0), body_mass_g(mean 4202, min 2700, max 6300 and median 4050),sex(male 168, female 165) and year(mean 2008, min 2007, max 2009 and median 2008). The variable bill_length_mm, bill_depth_mm, flipper_length_mm and body_mass_g all have 2 NAs(missing data), the variable sex has 11 NAs(missing data).
+
+The dataset has 344 rows and 8 columns, and the mean flipper length is 200.9152mm.
+
+```{r problem 1_continue}
+ggplot(data = penguins, aes(x = bill_length_mm, y = flipper_length_mm, colour = species))+
+  geom_point()
+ggsave('scatterplot_for_problem_1.pdf')
 
 ```
 
+Tip: Missing data are removed automatically when drawing plot.
 
-#problem 2
+# problem 2
 
-``` {r problem 2}
-
+```{r problem 2}
+set.seed(111)
+test_data <- tibble(random_number = rnorm(10),
+                    logical_vector = if_else(random_number>0, TRUE, FALSE),
+                    character_vector = c('this','is','a','test','in','hw1','problem2','for','mean','value'),
+                    factor_vector = factor(c('left','right','right','left','middle','middle','middle','left','left','right'),levels = c('left','middle','right')))
+randomnumber <- pull(test_data,1)
+mean(randomnumber)
+logicalvector <- pull(test_data,2)
+mean(logicalvector)
+charactervector <- pull(test_data,3)
+mean(charactervector)
+factorvector <- pull(test_data,4)
+mean(factorvector)
 ```
 
+The mean of random sample and logical vector can be calculated, the 'TRUE' and 'FALSE' respectively equal 1 and 0. The mean of character vector and factor vector cannot be calculated.
+
+```{r try as.numric}
+charactervector <- as.numeric(pull(test_data,3))
+charactervector
+mean(charactervector)
+factorvector <- as.numeric(pull(test_data,4))
+factorvector
+mean(factorvector)
+```
+
+After converting character vector and factor vector to numeric, the factor vector can be calculated and levels 'left', 'middle','right' are respectively converted to 1,2 and 3. However, the character vector cannot be converted to numeric and calculated, and they will finally become NAs.
