@@ -3,10 +3,11 @@ title: "HW1_jw4693"
 author: "Jianming Wang"
 date: "2024-09-13"
 output:
+  github_document: default
+  html_document:
+    toc: true
+    toc_float: true
   pdf_document: default
-  html_document: 
-   toc: true
-   toc_float: true
 ---
 
 This is a file for my homework 1 in Data Science I.
@@ -34,9 +35,9 @@ ncol(penguins)
 mean(penguins$flipper_length_mm,na.rm = T)
 ```
 
-The 344 penguins counted in the dataset are from 3 different species, Adelie(152), Chinstrap(68) and Gentoo(124). They are from 3 island, Biscoe(168), Dream(124) and Torgersen(52). Except the 2 variables above, the dataset also contains 6 important variables for penguins, including bill_length_mm(mean 43.92, min 32.10, max 59.60 and median 44.45), bill_depth_mm(mean 17.15, min 13.10, max 21.50 and median 17.30), flipper_length_mm(mean 200.9, min 172.0, max 231.0 and median 197.0), body_mass_g(mean 4202, min 2700, max 6300 and median 4050),sex(male 168, female 165) and year(mean 2008, min 2007, max 2009 and median 2008). The variable bill_length_mm, bill_depth_mm, flipper_length_mm and body_mass_g all have 2 NAs(missing data), the variable sex has 11 NAs(missing data).
+The 344 penguins counted in the data are from 3 different species, Adelie(152), Chinstrap(68) and Gentoo(124). They are from 3 island, Biscoe(168), Dream(124) and Torgersen(52). Except the 2 variables above, the data also contain 6 important variables for penguins, including bill_length_mm(mean 43.92, min 32.10, max 59.60 and median 44.45), bill_depth_mm(mean 17.15, min 13.10, max 21.50 and median 17.30), flipper_length_mm(mean 200.9, min 172.0, max 231.0 and median 197.0), body_mass_g(mean 4202, min 2700, max 6300 and median 4050),sex(male 168, female 165) and year(mean 2008, min 2007, max 2009 and median 2008). The variable bill_length_mm, bill_depth_mm, flipper_length_mm and body_mass_g all have 2 NAs(missing data), the variable sex has 11 NAs(missing data).
 
-The dataset has 344 rows and 8 columns, and the mean flipper length is 200.9152mm.
+The data have `r nrow(penguins)` rows and `r ncol(penguins)` columns, and the mean flipper length is `r mean(penguins$flipper_length_mm,na.rm = T)`mm.
 
 ```{r problem 1_continue}
 ggplot(data = penguins, aes(x = bill_length_mm, y = flipper_length_mm, colour = species))+
